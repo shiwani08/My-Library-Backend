@@ -6,3 +6,4 @@ gunicorn==22.0.0
 pymongo==4.8.0
 Flask-Bcrypt
 Flask-Login
+Flask-CORS
