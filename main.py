@@ -1,3 +1,4 @@
+import os
 from app.config.config import create_app, mongo
 from app.routes.auth_routes import user_bp
 from app.routes.books_routes import book_bp
@@ -18,4 +19,5 @@ app.register_blueprint(user_bp)
 app.register_blueprint(book_bp)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render sets PORT env variable
+    app.run(host="0.0.0.0", port=port)
