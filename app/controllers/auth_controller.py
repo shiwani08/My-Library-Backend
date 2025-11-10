@@ -36,3 +36,25 @@ class AuthController:
             return jsonify(users), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
+        
+    @staticmethod
+    def login():
+        data = request.get_json()  # ✅ Get body from JSON
+        email = data.get("email")
+        password = data.get("password")
+
+        user = UserModel.find_by_email(email)
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+
+        if not bcrypt.check_password_hash(user["password"], password):
+            return jsonify({"error": "Invalid password"}), 401
+
+        return jsonify({
+            "message": "Login successful",
+            "user": {
+                "id": str(user["_id"]),
+                "username": user["username"],
+                "email": user["email"]
+            }
+        }), 200
