@@ -1,3 +1,41 @@
+# ---- Virtual environment ----
 venv/
 .env
-# ./config/
+
+# ---- Python cache ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ---- VSCode and IDE junk ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Logs and temporary files ----
+*.log
+*.tmp
+*.bak
+
+# ---- Byte-compiled and compiled binaries ----
+*.so
+*.dll
+*.dylib
+*.exe
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Environment / Config / Secrets ----
+app/config/config.py   # contains credentials or URIs
+*.env*
+.env.local
+.env.test
+.env.production
+
+# ---- Cache or build artifacts ----
+dist/
+build/
+*.egg-info/
