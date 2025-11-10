@@ -1,0 +1,43 @@
+from flask import request, jsonify
+from app.models.books_models import BookModel
+
+class BookController:
+    @staticmethod
+    def add_book():
+        try:
+            data = request.get_json()
+            title = data.get("title")
+            author = data.get("author")
+
+            if not title or not author:
+                return jsonify({"error": "Both title and author are required"}), 400
+
+            book_id = BookModel.add_book(title, author)
+            return jsonify({"message": "Book added successfully", "book_id": book_id}), 201
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    @staticmethod
+    def get_books():
+        try:
+            books = BookModel.get_all_books()
+            return jsonify(books), 200
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    @staticmethod
+    def get_book_title():
+        try:
+            title = request.args.get("title")
+            if not title:
+                return jsonify({"error": "Title parameter is required"}), 400
+
+            book = BookModel.get_book_title(title)
+            if not book:
+                return jsonify({"error": "Book not found"}), 404
+
+            return jsonify(book), 200
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500

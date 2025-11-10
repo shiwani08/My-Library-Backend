@@ -1,5 +1,6 @@
 from app.config.config import create_app, mongo
 from app.routes.auth_routes import user_bp
+from app.routes.books_routes import book_bp
 from flask import jsonify
 
 app = create_app()
@@ -14,6 +15,7 @@ def test_db():
 
 # Register blueprints
 app.register_blueprint(user_bp)
+app.register_blueprint(book_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)
