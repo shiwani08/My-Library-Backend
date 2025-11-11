@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.books_controller import BookController
+from app.books.books_controller import BookController
 
 book_bp = Blueprint("book_bp", __name__)
 

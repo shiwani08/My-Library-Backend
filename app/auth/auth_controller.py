@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from app.config.config import bcrypt
-from app.models.user_models import UserModel
+from app.auth.user_models import UserModel
 
 class AuthController:
     @staticmethod

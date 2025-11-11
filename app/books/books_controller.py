@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from app.models.books_models import BookModel
+from app.books.books_models import BookModel
 
 class BookController:
     @staticmethod
