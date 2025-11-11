@@ -8,6 +8,7 @@
 ## IN PROGRESS
 | Features         | Dependencies |  
 |------------------|---------|
+| **Data validation for the DB**          |  | 
 | **UD operation on books**          |  | 
 
 ## NEXT PHASES
