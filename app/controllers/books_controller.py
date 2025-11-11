@@ -8,12 +8,13 @@ class BookController:
             data = request.get_json()
             title = data.get("title")
             author = data.get("author")
+            status = data.get("status")
 
-            if not title or not author:
-                return jsonify({"error": "Both title and author are required"}), 400
+            if not title or not author or not status:
+                return jsonify({"error": "Title, author, and status are required"}), 400
 
-            book_id = BookModel.add_book(title, author)
-            return jsonify({"message": "Book added successfully", "book_id": book_id}), 201
+            book_id = BookModel.add_book(title, author, status)
+            return jsonify({"message": "Book added successfully!!!!", "book_id!!": book_id, "status": status}), 201
 
         except Exception as e:
             return jsonify({"error": str(e)}), 500
