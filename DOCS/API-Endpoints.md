@@ -31,3 +31,12 @@ This document lists all current API endpoints for **User Authentication** and **
   - **Book routes** → handled by `book_bp`
 - If you ever add more operations (update/delete), continue following this structure for consistency.
 
+## To build
+
+| Endpoint         | Method | Description                | Request Body Example / Query Params |
+|------------------|---------|----------------------------|-------------------------------------|
+| `/books/[id]`      | PATCH    | Update the details of the book           |  |
+| `/books/[id]`     | DELETE     | Delete a book based on the id      | |
+| `/upload-cover`      | POST    | Add the cover of the book           |  |
+| `/favorites`     | POST     | Get list of all favorites books      | |
+| `/genres`      | GET     | Get books by genres |  |
