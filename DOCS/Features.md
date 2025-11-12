@@ -1,17 +1,17 @@
-## DONE
+##  ✅ DONE
 
 | Features         | Dependencies |  
 |------------------|---------|
 | **CR operation on books**          |  |  
 | **User Authentication**       |  |  
 
-## IN PROGRESS
+## 🚧 IN PROGRESS
 | Features         | Dependencies |  
 |------------------|---------|
 | **Data validation for the DB**          |  | 
 | **UD operation on books**          |  | 
 
-## NEXT PHASES
+## ⏭ NEXT PHASES
 | Feature                             | What It Adds                                       | Dependencies                   |
 | ----------------------------------- | -------------------------------------------------- | ------------------------------ |
 | **Borrow & Return Books**           | Let users issue and return books; track due dates  | new `BorrowRecord` model       |

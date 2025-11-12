@@ -8,3 +8,4 @@ Flask-Bcrypt
 Flask-Login
 Flask-CORS
 gunicorn
+Pydantic
