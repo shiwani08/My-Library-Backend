@@ -21,6 +21,8 @@ This document lists all current API endpoints for **User Authentication** and **
 | `/add-book`      | POST    | Add a new book             | `{ "title": "The Great Gatsby", "author": "F. Scott Fitzgerald" }` |
 | `/get-books`     | GET     | Get list of all books      | — |
 | `/get-book`      | GET     | Get a single book by title | Query: `/get-book?title=The%20Great%20Gatsby` |
+| `/update-book/<book_id>`      | PUT    | Update the details of the book           | `{ "author": "J.K. Rowling", "status": "have-read", "title": "Harry Potter and the Philosopher's Stone"}`  |
+| `/delete-book/<book_id>`     | DELETE     | Delete a book based on the id      | |
 
 ---
 
@@ -35,8 +37,6 @@ This document lists all current API endpoints for **User Authentication** and **
 
 | Endpoint         | Method | Description                | Request Body Example / Query Params |
 |------------------|---------|----------------------------|-------------------------------------|
-| `/books/[id]`      | PATCH    | Update the details of the book           |  |
-| `/books/[id]`     | DELETE     | Delete a book based on the id      | |
 | `/upload-cover`      | POST    | Add the cover of the book           |  |
 | `/favorites`     | POST     | Get list of all favorites books      | |
 | `/genres`      | GET     | Get books by genres |  |

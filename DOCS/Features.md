@@ -2,14 +2,14 @@
 
 | Features         | Dependencies |  
 |------------------|---------|
-| **CR operation on books**          |  |  
+| **CRUD operation on books**          |  |  
 | **User Authentication**       |  |  
 
 ## 🚧 IN PROGRESS
 | Features         | Dependencies |  
 |------------------|---------|
+| **Forgot username or password** | |
 | **Data validation for the DB**          |  | 
-| **UD operation on books**          |  | 
 
 ## ⏭ NEXT PHASES
 | Feature                             | What It Adds                                       | Dependencies                   |
