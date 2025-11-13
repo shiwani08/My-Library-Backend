@@ -42,3 +42,35 @@ class BookController:
 
         except Exception as e:
             return jsonify({"error": str(e)}), 500
+        
+    @staticmethod
+    def update_book(book_id):
+        try:
+            data = request.get_json()
+            title = data.get("title")
+            author = data.get("author")
+            status = data.get("status")
+
+            updated_book = BookModel.update_book(book_id, title, author, status)
+            if not updated_book:
+                return jsonify({"error": "Book not found"}), 404
+
+            return jsonify({
+                "message": "Book updated successfully!",
+                "book": updated_book
+            }), 200
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    @staticmethod
+    def delete_book(book_id):
+        try:
+            deleted = BookModel.delete_book(book_id)
+            if not deleted:
+                return jsonify({"error": "Book not found"}), 404
+
+            return jsonify({"message": "Book deleted successfully!"}), 200
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
