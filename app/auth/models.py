@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from app.config.config import mongo, bcrypt
 
-class UserModel:
+class UserModel():
     @staticmethod
     def find_by_email(email):
         return mongo.db.users.find_one({"email": email})

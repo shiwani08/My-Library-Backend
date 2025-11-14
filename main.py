@@ -1,7 +1,7 @@
 import os
 from app.config.config import create_app, mongo
-from app.auth.auth_routes import user_bp
-from app.books.books_routes import book_bp
+from app.auth.routes import user_bp
+from app.books.routes import book_bp
 from flask import jsonify
 
 app = create_app()
