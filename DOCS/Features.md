@@ -4,11 +4,11 @@
 |------------------|---------|
 | **CRUD operation on books**          |  |  
 | **User Authentication**       |  |  
+| **Forgot username or password** | |
 
 ## 🚧 IN PROGRESS
 | Features         | Dependencies |  
 |------------------|---------|
-| **Forgot username or password** | |
 | **Data validation for the DB**          |  | 
 
 ## ⏭ NEXT PHASES
