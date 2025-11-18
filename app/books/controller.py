@@ -9,11 +9,13 @@ class BookController:
             title = data.get("title")
             author = data.get("author")
             status = data.get("status")
+            description = data.get("description")
+            ratings = data.get("ratings")
 
             if not title or not author or not status:
                 return jsonify({"error": "Title, author, and status are required"}), 400
 
-            book_id = BookModel.add_book(title, author, status)
+            book_id = BookModel.add_book(title, author, status, description, ratings)
             return jsonify({"message": "Book added successfully!!!!", "book_id!!": book_id, "status": status}), 201
 
         except Exception as e:
@@ -50,8 +52,10 @@ class BookController:
             title = data.get("title")
             author = data.get("author")
             status = data.get("status")
+            description = data.get("description")
+            ratings = data.get("ratings")
 
-            updated_book = BookModel.update_book(book_id, title, author, status)
+            updated_book = BookModel.update_book(book_id, title, author, status, description, ratings)
             if not updated_book:
                 return jsonify({"error": "Book not found"}), 404
 

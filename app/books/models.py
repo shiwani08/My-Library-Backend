@@ -10,11 +10,11 @@ class BookModel:
     }
     
     @staticmethod
-    def add_book(title, author, status):
+    def add_book(title, author, status, description, ratings=None):
         color = BookModel.STATUS_COLORS.get(status, "default")
-        book_data = {"title": title, "author": author, "status": status, "color": color}
+        book_data = {"title": title, "author": author, "status": status, "color": color, "description": description, "ratings": ratings}
         result = mongo.db.books.insert_one(book_data)
-        return str(book_data)
+        return str(result.inserted_id)
 
     @staticmethod
     def get_all_books():
@@ -33,7 +33,7 @@ class BookModel:
         return book
     
     @staticmethod
-    def update_book(book_id, title=None, author=None, status=None):
+    def update_book(book_id, title=None, author=None, status=None, description=None, ratings=None):
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         if not book:
             return None
@@ -46,6 +46,10 @@ class BookModel:
         if status:
             update_data["status"] = status
             update_data["color"] = BookModel.STATUS_COLORS.get(status, "default")
+        if description:
+            update_data["description"] = description
+        if ratings is not None:
+            update_data["ratings"] = ratings
 
         mongo.db.books.update_one({"_id": ObjectId(book_id)}, {"$set": update_data})
         
