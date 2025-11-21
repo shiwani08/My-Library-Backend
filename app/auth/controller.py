@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from app.config.config import bcrypt
+from app.core.config import bcrypt
 from app.auth.models import UserModel
 
 class AuthController:

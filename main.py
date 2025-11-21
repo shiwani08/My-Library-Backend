@@ -1,5 +1,5 @@
 import os
-from app.config.config import create_app, mongo
+from app.core.config import create_app, mongo
 from app.auth.routes import user_bp
 from app.books.routes import book_bp
 from flask import jsonify

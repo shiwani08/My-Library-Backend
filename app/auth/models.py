@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime, timedelta, timezone
-from app.config.config import mongo, bcrypt
+from app.core.config import mongo, bcrypt
 
 class UserModel():
     @staticmethod
