@@ -90,6 +90,7 @@ class BookController(BaseController):
     model_class = BookModel
     resource_name = "book"
     
+    # make generic functions pass self
     @classmethod
     def get_required_fields(cls):
         return ["title", "author", "status"]

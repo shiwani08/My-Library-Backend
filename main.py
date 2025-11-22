@@ -15,6 +15,7 @@ def test_db():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 # Register blueprints
+# use the core routes here
 app.register_blueprint(user_bp)
 app.register_blueprint(book_bp)
 
