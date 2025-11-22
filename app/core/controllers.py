@@ -38,10 +38,10 @@ class BaseController:
         
         try:
             # Get pagination parameters
-            page = request.args.get("page", 1, type=int)
-            limit = request.args.get("limit", 10, type=int)
+            # page = request.args.get("page", 1, type=int)
+            # limit = request.args.get("limit", 10, type=int)
             
-            items = cls.model_class.get_all(page=page, limit=limit)
+            items = cls.model_class.get_all()
             return jsonify(items), 200
             
         except Exception as e:
