@@ -21,6 +21,7 @@
 | **Recommendations API**             | Suggest books based on favorites, genre, or author | logic or small ML module       |
 | **Recently Added / Trending Books** | Sort by date added or popularity                   | MongoDB queries                |
 | **Search API**                      | Search by title, author, or genre                  | MongoDB text index             |
+|**Books for series** | |
 | **Lazy loader**          |  |
 
 ## 🔐 SECRITY LAYER

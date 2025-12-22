@@ -113,6 +113,10 @@ class BookController(BaseController):
         return BookController.get_by_query()
     
     @staticmethod
+    def get_book_author():
+        return BookController.get_by_query()
+    
+    @staticmethod
     def update_book(book_id):
         return BookController.update(book_id)
     

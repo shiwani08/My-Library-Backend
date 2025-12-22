@@ -64,101 +64,83 @@
 #         return result.deleted_count > 0
 
 # using the core modules
+
 from app.core.models import BaseModel
+from .book_constants import BOOK_FIELDS, STATUS_COLORS
+from app.core.config import mongo
 class BookModel(BaseModel):
     collection_name = "books"
-    
-    STATUS_COLORS = {
-        "currently-reading": "geekblue",
-        "have-read": "green",
-        "to-be-read": "gold"
-    }
-    
+    BOOK_FIELDS = BOOK_FIELDS
+    STATUS_COLORS = STATUS_COLORS
+
     @classmethod
     def before_insert(cls, data):
-        
-        # Automatically add color based on status
-        if "status" in data and "color" not in data:
-            data["color"] = cls.STATUS_COLORS.get(data["status"], "default")
+        # Auto-assign color based on status
+        if "status" in data:
+            data["color"] = STATUS_COLORS.get(data["status"], "default")
         return data
-    
+
     @classmethod
     def before_update(cls, current_document, update_data):
-       
-        # Update color if status is being changed
+        # Update color if status is changed during update
         if "status" in update_data:
-            update_data["color"] = cls.STATUS_COLORS.get(update_data["status"], "default")
+            update_data["color"] = STATUS_COLORS.get(update_data["status"], "default")
         return update_data
-    
+
     @staticmethod
-    def add_book(title, author, status, description, ratings=None):
-        
-        return BookModel.add(
-            title=title,
-            author=author,
-            status=status,
-            description=description,
-            ratings=ratings
-        )
-    
+    def add_book(data: dict):
+        # Only include valid fields
+        clean_data = {
+            f: data.get(f)
+            for f in BOOK_FIELDS
+            if data.get(f) is not None
+        }
+        return BookModel.add(**clean_data)
+
+    @staticmethod
+    def update_book(book_id, data: dict):
+        clean_data = {
+            f: data.get(f)
+            for f in BOOK_FIELDS
+            if data.get(f) is not None
+        }
+        return BookModel.update(book_id, **clean_data)
+
     @staticmethod
     def get_all_books():
-        
         return BookModel.get_all()
-    
+
     @staticmethod
     def get_book_title(title):
-        
         book = BookModel.get_by_field("title", title)
-        
-        # Ensure color is present (for backward compatibility)
         if book and "color" not in book:
-            book["color"] = BookModel.STATUS_COLORS.get(book.get("status"), "default")
-        
+            book["color"] = STATUS_COLORS.get(book.get("status"), "default")
         return book
-    
-    @staticmethod
-    def update_book(book_id, title=None, author=None, status=None, description=None, ratings=None):
-        
-        return BookModel.update(
-            book_id,
-            title=title,
-            author=author,
-            status=status,
-            description=description,
-            ratings=ratings
-        )
-    
+
     @staticmethod
     def delete_book(book_id):
-       
         return BookModel.delete(book_id)
-    
-    # Additional custom methods
+
+    # Extra utilities
     @classmethod
     def get_books_by_status(cls, status):
-        
         return cls.get_many_by_field("status", status)
-    
+
     @classmethod
     def get_books_by_author(cls, author):
-        
         return cls.get_many_by_field("author", author)
-    
+
     @classmethod
-    def search_books(cls, search_term):
-        
-        from app.core.config import mongo
+    def search_books(cls, term):
         collection = cls.get_collection()
-        
-        # Case-insensitive search
-        regex_pattern = {"$regex": search_term, "$options": "i"}
+
+        regex = {"$regex": term, "$options": "i"}
         query = {
             "$or": [
-                {"title": regex_pattern},
-                {"author": regex_pattern}
+                {"title": regex},
+                {"author": regex}
             ]
         }
-        
-        documents = list(collection.find(query))
-        return cls.serialize_list(documents)
+
+        docs = list(collection.find(query))
+        return cls.serialize_list(docs)
