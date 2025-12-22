@@ -21,6 +21,7 @@ BaseRoutes.register_standard_routes(book_bp, [
     ("/add-book", ["POST"], BookController.add_book),
     ("/get-books", ["GET"], BookController.get_books),
     ("/get-book", ["GET"], BookController.get_book_title),
+    ("/get-books-by-author", ["GET"], BookController.get_book_author),
     ("/update-book/<book_id>", ["PUT"], BookController.update_book),
     ("/delete-book/<book_id>", ["DELETE"], BookController.delete_book),
 ])

@@ -9,3 +9,4 @@ Flask-Login
 Flask-CORS
 gunicorn
 Pydantic
+Flask-JWT-Extended
