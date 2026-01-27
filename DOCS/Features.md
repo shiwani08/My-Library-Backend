@@ -1,3 +1,5 @@
+TO ACTIVATE VENV IN WINDOWS: venv\Scripts\Activate
+
 ##  ✅ DONE
 
 | Features         | Dependencies |  
