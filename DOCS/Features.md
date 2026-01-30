@@ -12,6 +12,7 @@ TO ACTIVATE VENV IN WINDOWS: venv\Scripts\Activate
 | Features         | Dependencies |  
 |------------------|---------|
 | **Data validation for the DB**          |  | 
+| **Check for duplicate book entries**          |  | 
 
 ## ⏭ NEXT PHASES
 | Feature                             | What It Adds                                       | Dependencies                   |
